@@ -1,5 +1,5 @@
 @import url("./nav.css");
-
+@import url("./banner.css");
 
 *{
     padding: 0;
@@ -8,6 +8,10 @@
 }
 
 :root{
- --black : #2B2B2B
+    --black : #2B2B2B;
+    --pink : #FC2D75
 }
 
+main{
+    margin: 100px 10%;
+}

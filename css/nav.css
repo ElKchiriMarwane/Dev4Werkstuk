@@ -1,0 +1,40 @@
+.nav-item{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav{
+    display: grid;
+    grid-template-rows: repeat(3, 50px);
+    grid-template-columns: 50px 200px;
+    grid-template-areas: 
+    "x title"
+    "video ."
+    "info .";
+    position: fixed;
+}
+
+#none{
+    background: var(--black);
+    grid-area: x;
+}
+
+#video{
+    background: var(--black);
+    grid-area: video;
+}
+
+#info{
+   
+    background: var(--black);
+    grid-area: info;
+    border-radius: 0 0 20px;
+}
+#title{
+    background: var(--black);
+    grid-area: title;
+    border-radius: 0 0 20px;
+    font-size: 10px;
+    color: white;
+}

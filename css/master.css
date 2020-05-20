@@ -5,6 +5,7 @@
     padding: 0;
     margin: 0;
     font-family: Poppins;
+    transition: 0.2s;
 }
 
 :root{
@@ -14,4 +15,9 @@
 
 main{
     margin: 100px 10%;
+}
+
+hr{
+    margin: 5em 0;
+    background-color: var(--pink);
 }

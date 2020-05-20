@@ -38,3 +38,12 @@ nav{
     font-size: 10px;
     color: white;
 }
+
+#title a {
+    text-decoration: none;
+    color: white;   
+}
+
+#title a:hover{
+    color: var(--pink);
+}

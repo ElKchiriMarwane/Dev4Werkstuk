@@ -7,11 +7,68 @@ let response, request
 
 
 const AppendData = (data) => {
-data.forEach(vid => {
-    CreateElement(vid.category, vid["genre-v2"], vid.name, vid["recorded-at"], vid.thumbnail.url)
-});
+    let filteredarr = [];
+    document.querySelector(".videos").innerHTML = ""
+    data.forEach(vid => {
+        CreateElement(vid.category, vid["genre-v2"], vid.name, vid["recorded-at"], vid.thumbnail.url)
+    });
+    var search = document.querySelector(".search input");
+    search.addEventListener("keyup", function(){
+        var val = search.value
+        document.querySelector(".videos").innerHTML = ""
+        data.forEach(vid => {
+            
+            if(vid.name.toLowerCase().includes(val)){
+                console.log(vid.name.toLowerCase())
+                CreateElement(vid.category, vid["genre-v2"], vid.name, vid["recorded-at"], vid.thumbnail.url)
+            }
+            
+        });
+    })
+    var genre = document.querySelectorAll(".g");
+    genre.forEach(el => {
+        el.addEventListener("click", function(){
+            document.querySelector(".videos").innerHTML = ""
+        filteredarr = []
+        data.forEach(item => {
+            if(item["genre-v2"] == el.innerHTML.toLowerCase()){
+                filteredarr.push(item)
+            }
+        })
+        filteredarr.forEach(vid => {
+            CreateElement(vid.category, vid["genre-v2"], vid.name, vid["recorded-at"], vid.thumbnail.url)
+        });
+        })
+    })
+    var category = document.querySelectorAll(".dg")
+    category.forEach(el => {
+    el.addEventListener("click", function(){
+        document.querySelector(".videos").innerHTML = ""
+        filteredarr = []
+        data.forEach(item => {
+            if(item.category == el.innerHTML.toLowerCase()){
+                filteredarr.push(item)
+            }
+        })
+        
+        console.log(filteredarr)
+        filteredarr.forEach(vid => {
+            CreateElement(vid.category, vid["genre-v2"], vid.name, vid["recorded-at"], vid.thumbnail.url)
+        });
+    })
+    var clear = document.querySelector(".wissen")
+    clear.addEventListener("click", function(){
+        document.querySelector(".videos").innerHTML = ""
+        data.forEach(vid => {
+            CreateElement(vid.category, vid["genre-v2"], vid.name, vid["recorded-at"], vid.thumbnail.url)
+        });
+    })
 
-}
+})
+
+
+    
+};
 
 
 const CreateElement = (category, genre, name, place, thumbnail) => {
@@ -39,7 +96,7 @@ const CreateElement = (category, genre, name, place, thumbnail) => {
             this.group.className = "group"
             this.group.id = name
             this.group.addEventListener("click", function(){
-                window.location.href = `html/detail.html?id=${name}`
+                window.location.href = `http://127.0.0.1:5500/html/detail.html?id=${name}`
             })
             this.head.append(this.items.img)
             this.body.append(this.items.at, this.items.cat,this.items.gen)
